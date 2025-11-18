@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<head>
+  <title>🩵🩵 Mini Games </title>
+</head>
+
+<link rel="stylesheet" href="./1.css">
+
+<body>
+
+  <div class="flowers"></div>
+
+  <h1>💖 Mini Games 1 💖</h1>
+  <div class="container">
+    <div class="game-box">
+      <h2>Pick a Number ( 1 – 10 )</h2>
+      <p>(Pick a number to reveal a sweet surprise !!!!!)</p>
+      <div>
+        <button onclick="pickNum(1)">1</button>
+        <button onclick="pickNum(2)">2</button>
+        <button onclick="pickNum(3)">3</button>
+        <button onclick="pickNum(4)">4</button>
+        <button onclick="pickNum(5)">5</button>
+        <button onclick="pickNum(6)">6</button>
+        <button onclick="pickNum(7)">7</button>
+        <button onclick="pickNum(8)">8</button>
+        <button onclick="pickNum(9)">9</button>
+        <button onclick="pickNum(10)">10</button>
+      </div>
+      <div id="pickResult" class="note">
+        💗 💗Choose a number 💗💗
+      </div>
+    </div>
+  </div>
+
+  <div class="h_4">
+    <a href="./index.html#re" class="button_1">Home Page</a>
+    <a href="./2.html" class="button_1">Next Game </a>
+  </div>
+
+
+  <script>
+    const picks = {
+      1: "Always keep smiling 😄✨ — it makes my whole day brighter!!!! ☀️💛",
+      2: "Love YOU my Mandakkkk 🐸🐸🐸 — tar tar 🩵💞",
+      3: "You are the prettiest girl I have ever met ✨💖 — not just outside, but inside too 🌟💕",
+      4: "You believe in me, my dreams, and my potential even more than I do 💫🩵🩵",
+      5: "Your face is the most adorable thing in the world 😍💗 — eyes, hair, lips… everything ..✨🌸",
+      6: "Your voice is therapy for me 🗣️🗣️💞 — those sweetest “good mornings” and “love yous” 🤌🥺",
+      7: "Here’s a virtual kiss from mee 😘💋✨",
+      8: "Holding your hand feels like everything in the world finally makes sense 🤝💞🌍",
+      9: "You are a home to me 🏡❤️ — my comfort place",
+      10: "And the best thing… you always love me more 🫶💗"
+    };
+
+    function pickNum(n) {
+      document.getElementById('pickResult').textContent = picks[n];
+    }
+  </script>
+
+  <script>
+    const flowerContainer = document.querySelector('.flowers');
+    const flowerEmojis = ["🌸", "🪻", "🌷", "🌼", "🌻", "🌺", "🥀", "🌹", "🪷", "💮", "🌸", "💐"];
+    const totalFlowers = 100;
+
+    for (let i = 0; i < totalFlowers; i++) {
+      const flower = document.createElement('span');
+      flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.fontSize = (30 + Math.random() * 25) + "px";
+      flower.style.animationDuration = (5 + Math.random() * 2) + "s";
+      flowerContainer.appendChild(flower);
+
+      flower.style.animationDelay = Math.random() * 5 + "s";
+    }
+  </script>
+
+</body>
+
+</html>

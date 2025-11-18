@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>
+  <title>🩵🩵 Mini Games </title>
+</head>
+
+<link rel="stylesheet" href="./2.css">
+
+<body>
+
+  <div class="flowers"></div>
+
+  <h1>💖 Mini Games 2 💖</h1>
+  <div class="container">
+    <div class="game-box">
+      <h2> 😍😍 Truth or Dare 😍😍 </h2>
+      <button onclick="loveTruth()">💬 Truth 💬</button>
+      <button onclick="loveDare()">🔥 Dare 🔥</button>
+      <div id="tdOut" class="note">Choose truth or dare!</div>
+    </div>
+  </div>
+
+  <div class="h_4">
+    <a href="./index.html#re" class="button_1">Home Page</a>
+    <a href="./3.html" class="button_1">Next Game </a>
+  </div>
+
+  <script>
+    const truths = [
+      "What was your first impression of me? 😳",
+      "What about me makes you happiest? 💞",
+      "What is one thing you want us to do more? 💗",
+      "Do you think I’m your forever person? 💍"
+    ];
+    const dares = [
+      "Send me your cutest selfie 😘",
+      "Give me a compliment right now 💖",
+      "Say 'I love you' in 3 different ways 🥺",
+      "Send me a voice note saying you miss me 🎤"
+    ];
+    function loveTruth() {
+      const r = Math.floor(Math.random() * truths.length);
+      document.getElementById('tdOut').textContent = truths[r];
+    }
+    function loveDare() {
+      const r = Math.floor(Math.random() * dares.length);
+      document.getElementById('tdOut').textContent = dares[r];
+    }
+
+  </script>
+
+  <script>
+    const flowerContainer = document.querySelector('.flowers');
+    const flowerEmojis = ["💖", "💗", "💓", "💞", "💙", "❤️", "🧡", "💛", "🤍", "🖤", "🤎", "❤️‍🔥", "💕", "💞", "💗", "💘", "💝"];
+    const totalFlowers = 40;
+
+    for (let i = 0; i < totalFlowers; i++) {
+      const flower = document.createElement('span');
+      flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.fontSize = (30 + Math.random() * 25) + "px";
+      flower.style.animationDuration = (5 + Math.random() * 2) + "s";
+      flowerContainer.appendChild(flower);
+      flower.style.animationDelay = Math.random() * 5 + "s";
+    }
+  </script>
+</body>
+
+</html>

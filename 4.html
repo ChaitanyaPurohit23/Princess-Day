@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Proposal</title>
+</head>
+
+<link rel="stylesheet" href="./4.css">
+
+<body>
+    <div class="flowers"></div>
+    <h1> 💐💐 Propasal 💐💐 </h1>
+    <div class="container">
+        <div class="game-box">
+                <h2 id="questionText">Will you be my GIRLFRIEND?</h2>
+                <div class="buttons_1">
+                    <button id="yesBtn">Yes!</button>
+                    <button id="noBtn">No...</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="h_4">
+            <a href="./index.html#re" class="button_1">Home Page</a>
+        </div>
+
+
+
+        <script>
+            const flowerContainer = document.querySelector('.flowers');
+            const flowerEmojis = ["🎈", "🎊", "🎉", "✨", "🎀"];
+            const totalFlowers = 80;
+
+            for (let i = 0; i < totalFlowers; i++) {
+                const flower = document.createElement('span');
+                flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                flower.style.left = Math.random() * 100 + "vw";
+                flower.style.fontSize = (30 + Math.random() * 25) + "px";
+                flower.style.animationDuration = (5 + Math.random() * 2) + "s";
+                flowerContainer.appendChild(flower);
+                flower.style.animationDelay = Math.random() * 5 + "s";
+            }
+        </script>
+        <script>
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const questionText = document.getElementById('questionText');
+            const responseMessage = document.getElementById('responseMessage');
+            const buttonsDiv = document.querySelector('.buttons');
+
+            let noAttempts = 0;
+
+            yesBtn.addEventListener('click', () => {
+                questionText.textContent = "Yay! I knew you'd say yes 🩵🩵🩵🩵";
+                responseMessage.textContent = "You've made me the happiest person alive!";
+                responseMessage.classList.remove('hidden');
+                buttonsDiv.classList.add('hidden'); 
+            });
+
+            noBtn.addEventListener('click', () => {
+                noAttempts++;
+                if (noAttempts === 1) {
+                    questionText.textContent = "Are you really sure? Think about it again!";
+                } else if (noAttempts === 2) {
+                    questionText.textContent = "Come on, please say yes! I promise it'll be fun!";
+                } else if (noAttempts === 3) {
+                    questionText.textContent = "My heart is breaking! Just one more chance to say YES?";
+                    noBtn.style.position = 'absolute';
+                    noBtn.addEventListener('mouseover', moveNoButton);
+                } else {
+        
+                    questionText.textContent = "You're making this hard! Just click Yes! 😉";
+                }
+            });
+
+            function moveNoButton() {
+                const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+                const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+                noBtn.style.left = `${x}px`;
+                noBtn.style.top = `${y}px`;
+            }
+        </script>
+
+</body>

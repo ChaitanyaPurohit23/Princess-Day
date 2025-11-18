@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+    <title>🩵🩵 Mini Games </title>
+</head>
+
+<link rel="stylesheet" href="./3.css">
+
+<body>
+
+    <div class="flowers"></div>
+
+    <h1>💖 Mini Games 3 💖</h1>
+    <div class="container">
+        <div class="game-box">
+            <h2> 📷 Memory Match Game 📷 </h2>
+            <div id="gameBoard"></div>
+        </div>
+    </div>
+
+    <div class="h_4">
+        <a href="./index.html#re" class="button_1">Home Page</a>
+    </div>
+
+    <script>
+        const symbols = ["🐸", "🐸", "🐒", "🐒", "😘", "😘", "😮‍💨", "😮‍💨", "⭐", "⭐", "🎁", "🎁", "💎", "💎", "💐", "💐"];
+        let shuffled = symbols.sort(() => Math.random() - 0.5);
+
+        const board = document.getElementById("gameBoard");
+        let flippedCards = [];
+        let lockBoard = false;
+
+        shuffled.forEach((symbol, index) => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.dataset.symbol = symbol;
+            card.dataset.index = index;
+            card.textContent = "";
+            card.addEventListener("click", flipCard);
+            board.appendChild(card);
+        });
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this.classList.contains("flipped")) return;
+
+            this.classList.add("flipped");
+            this.textContent = this.dataset.symbol;
+            flippedCards.push(this);
+
+            if (flippedCards.length === 2) {
+                checkMatch();
+            }
+        }
+
+        function checkMatch() {
+            lockBoard = true;
+            const [card1, card2] = flippedCards;
+
+            if (card1.dataset.symbol === card2.dataset.symbol) {
+                card1.classList.add("matched");
+                card2.classList.add("matched");
+                flippedCards = [];
+                lockBoard = false;
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove("flipped");
+                    card2.classList.remove("flipped");
+                    card1.textContent = "";
+                    card2.textContent = "";
+                    flippedCards = [];
+                    lockBoard = false;
+                }, 700);
+            }
+        }
+    </script>
+
+
+    <script>
+        const flowerContainer = document.querySelector('.flowers');
+        const flowerEmojis = ["😀", "🤣", "😎", "🥰", "😍", "😘", "🤩", "😪", "😤"];
+        const totalFlowers = 80;
+
+        for (let i = 0; i < totalFlowers; i++) {
+            const flower = document.createElement('span');
+            flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.fontSize = (30 + Math.random() * 25) + "px";
+            flower.style.animationDuration = (5 + Math.random() * 2) + "s";
+            flowerContainer.appendChild(flower);
+            flower.style.animationDelay = Math.random() * 5 + "s";
+        }
+    </script>
+</body>
+
+</html>
